@@ -3,7 +3,29 @@ import { Link } from "react-router-dom";
 import { Card } from "../components/Card/Card";
 import Data from "../components/Card/Data.json";
 import CardHover from "../components/CardHover/CardHover.jsx";
-import Product from "../components/CardHover/Data2.json";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-creative";
+import "swiper/css/effect-fade";
+import "swiper/css/effect-cube";
+import "swiper/css/effect-flip";
+import "swiper/css/scrollbar";
+import "swiper/css/grid";
+import { Swiper, SwiperSlide } from "swiper/react";
+import {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  EffectFade,
+  EffectCoverflow,
+  EffectCreative,
+  EffectCards,
+} from "swiper/modules";
+import RandomCard from "../components/RandomCards/RandomCard.jsx";
+
+import Images from "../components/RandomCards/Images.json";
 
 const Home = () => {
   const backgroundImageStyle = {
@@ -77,12 +99,14 @@ const Home = () => {
           Our Products
         </h1>
         <div className="flex flex-row flex-wrap gap-[32px] py-2 justify-center transition-all duration-300 ease-in-out  ">
-          {Data.map((data) => (
+          {/* {Data.map((data) => (
             <Card key={data.id} product={data} />
-          ))}
+          ))} */}
           {isClicked
-            ? Product.map((item) => <Card key={item.id} product={item} />)
-            : ""}
+            ? Data.map((item) => <Card key={item.id} product={item} />)
+            : Data.slice(0, 8).map((item) => (
+                <Card key={item.id} product={item} />
+              ))}
         </div>
         <button
           className={`border-[#B88E2F] border w-[245px] text-[#B88E2F] text-[16px] font-semibold leading-[150%] text-center px-[70px] py-[12px] hover:bg-[#B88E2E] hover:text-[white] transition-all duration-300 ease-in-out rounded-sm `}
@@ -106,12 +130,93 @@ const Home = () => {
             Explore More
           </button>
         </div>
-        <div className="flex gap-x-[24px] overflow-x-auto w-2/3 h-full items-center px-6  ">
-          {Product.map((p) => (
-            <div key={p.id}>
-              <CardHover data1={p} />
+        <div className="flex justify-center items-center h-full w-2/3 ">
+          <Swiper
+            slidesPerView={2}
+            navigation={{
+              nextEl: ".button-next-slide",
+              prevEl: ".button-prev-slide",
+            }}
+            grabCursor={true}
+            effect={"creative"}
+            creativeEffect={{
+              prev: {
+                shadow: true,
+                translate: ["-120%", 0, -500],
+              },
+              next: {
+                shadow: true,
+                translate: ["120%", 0, -500],
+              },
+            }}
+            modules={[EffectCreative, Navigation, Pagination, EffectCards]}
+            className=" w-3/4 "
+            pagination={{
+              clickable: true,
+              el: ".swiper-pagination",
+              type: "bullets",
+            }}
+          >
+            {Data.slice(8, 12).map((p) => (
+              <SwiperSlide key={p.id}>
+                <CardHover data1={p} />
+              </SwiperSlide>
+            ))}
+
+            <div className="rounded-full rotate-180 w-12 h-12 flex justify-center items-center shadow-md bg-white absolute top-[50%] left-1 p-1 button-prev-slide z-20 ">
+              <img
+                src="/right.png"
+                alt=""
+                width={24}
+                height={24}
+                className="rounded-full"
+              />
             </div>
-          ))}
+            <div className="rounded-full w-12 h-12 flex justify-center items-center shadow-md bg-white absolute top-[50%] right-1 p-1 button-next-slide z-20 ">
+              <img
+                src="/right.png"
+                alt=""
+                width={24}
+                height={24}
+                className="rounded-full"
+              />
+            </div>
+          </Swiper>
+        </div>
+      </div>
+      <div className="mt-[67px] mb-[50px]">
+        <h1 className="w-full text-center text-[20px] font-poppins font-semibold text-[#616161] leading-[150%] ">
+          Share your setup with
+        </h1>
+        <h1 className="w-full text-center text-[40px] font-poppins font-bold text-[#3A3A3A] leading-[120%] ">
+          #FuniroFurniture
+        </h1>
+
+        <div className="w-[1799px] flex flex-row flex-wrap gap-2  items-center  ">
+          <div className="flex flex-col w-[42%] items-center gap-4 ">
+            <div className="flex items-end gap-2">
+              {" "}
+              <RandomCard image={Images[0]} />
+              <RandomCard image={Images[1]} />
+            </div>
+            <div className="flex items-start gap-2">
+              <RandomCard image={Images[5]} />
+              <RandomCard image={Images[6]} />
+            </div>
+          </div>
+          <div className="w-[16%] flex flex-row items-center h-full  justify-center ">
+            <RandomCard image={Images[2]} />
+          </div>
+          <div className=" flex flex-col w-[41%]  gap-3  ">
+            <div className="flex items-end w-full gap-2 ">
+              <RandomCard image={Images[3]} />
+              <RandomCard image={Images[4]} />
+            </div>
+            <div className="flex items-start w-full gap-2 ">
+              <RandomCard image={Images[7]} />
+              <RandomCard image={Images[8]} />
+            </div>
+          </div>
         </div>
       </div>
     </div>

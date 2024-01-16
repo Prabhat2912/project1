@@ -54,5 +54,33 @@
     "description": "Minimalist flower pot",
     "price": "Rp 500.000",
     "imageUrl": "/p8.png"
+  },
+  {
+    "id": 9,
+    "name": "Inner Peace",
+    "description": "Bed Room",
+    "price": "Rp 2.500.000",
+    "imageUrl": "/p9.png"
+  },
+  {
+    "id": 10,
+    "name": "Inner Peace",
+    "description": "Bed Room",
+    "price": "Rp 2.500.000",
+    "imageUrl": "/p10.png"
+  },
+  {
+    "id": 11,
+    "name": "Inner Peace",
+    "description": "Bed Room",
+    "price": "Rp 2.500.000",
+    "imageUrl": "/p11.png"
+  },
+  {
+    "id": 12,
+    "name": "Inner Peace",
+    "description": "Bed Room",
+    "price": "Rp 2.500.000",
+    "imageUrl": "/p9.png"
   }
 ]

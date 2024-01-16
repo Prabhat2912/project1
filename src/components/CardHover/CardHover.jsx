@@ -27,7 +27,7 @@ const CardHover = ({ data1 }) => {
         width: "404px",
         height: "582px",
       }}
-      className="transition transform hover:scale-105 duration-300 rounded-sm hover:cursor-pointer "
+      className=" transition transform hover:scale-105  rounded-sm hover:cursor-pointer "
       onClick={() => {
         navigate(`/product/${data1.id}`);
       }}
